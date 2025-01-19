@@ -2,6 +2,7 @@ from flask import Flask
 from flask_migrate import Migrate
 from os import environ, getenv
 
+from .models import User
 from .extensions import db
 from .routes import main_bp
 
@@ -21,7 +22,7 @@ def create_app():
         config = ProdConfig
 
     app.config.from_object(config)
-
+    
     db.init_app(app)
     migrate.init_app(app, db)
     app.register_blueprint(main_bp, url_prefix="/")
