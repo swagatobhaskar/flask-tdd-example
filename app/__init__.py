@@ -10,7 +10,7 @@ from config import DevConfig, ProdConfig
 
 migrate = Migrate()
 
-def create_app():
+def create_app(config_class=None):  # value to this config_class is only supplied in conftest.py
     app = Flask(__name__)
 
     env_type = getenv('ENV')
@@ -21,7 +21,7 @@ def create_app():
     else:
         config = ProdConfig
 
-    app.config.from_object(config)
+    app.config.from_object(config_class or config)
     
     db.init_app(app)
     migrate.init_app(app, db)

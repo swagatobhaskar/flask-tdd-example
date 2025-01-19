@@ -13,6 +13,12 @@ class Config:
 
 class DevConfig(Config):
     DEBUG = True
+    TESTING = False
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + path.join(BASEDIR, 'dev_ex.db')    #'sqlite:///:memory:'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+class TestConfig(Config):
+    DEBUG = True
     TESTING = True
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + path.join(BASEDIR, 'testing_ex.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
@@ -20,5 +26,5 @@ class DevConfig(Config):
 class ProdConfig(Config):
     DEBUG = False
     TESTING = False
-    # SQLALCHEMY_DATABASE_URI = <add postgresql path>
+    SQLALCHEMY_DATABASE_URI = environ.get('PROD_DATABASE_URI')
     SQLALCHEMY_TRACK_MODIFICATIONS = False

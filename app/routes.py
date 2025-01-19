@@ -9,3 +9,9 @@ def home():
 @main_bp.route('/about')
 def about():
     return "This is the about page."
+
+@main_bp.route('/newuser', methods=["POST"])
+def create_user():
+    pass
+    # data should come through APIs, not fromdata
+    

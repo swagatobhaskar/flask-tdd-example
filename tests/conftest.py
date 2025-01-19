@@ -11,7 +11,7 @@ from app.extensions import db
 
 @pytest.fixture
 def app():
-    app = create_app()
+    app = create_app('config.TestConfig')    # Explicitly pass the testing config
     
     # Create the tables in the test database
     # DATABASE_URI is set in the config file
