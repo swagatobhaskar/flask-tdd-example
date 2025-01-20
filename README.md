@@ -35,20 +35,23 @@
 
 - `minikube service flask-tdd-service`
     ```
-    |-----------|-------------------|-------------|--------------|
-    | NAMESPACE |       NAME        | TARGET PORT |     URL      |
-    |-----------|-------------------|-------------|--------------|
-    | default   | flask-tdd-service |             | No node port |
-    |-----------|-------------------|-------------|--------------|
-    😿  service default/flask-tdd-service has no node port
-    ❗  Services [default/flask-tdd-service] have type "ClusterIP" not meant to be exposed, however for local development minikube allows you to access this !
+    |-----------|-------------------|-------------|---------------------------|
+    | NAMESPACE |       NAME        | TARGET PORT |            URL            |
+    |-----------|-------------------|-------------|---------------------------|
+    | default   | flask-tdd-service |        8000 | http://192.168.58.2:30007 |
+    |-----------|-------------------|-------------|---------------------------|
     🏃  Starting tunnel for service flask-tdd-service.
     |-----------|-------------------|-------------|------------------------|
     | NAMESPACE |       NAME        | TARGET PORT |          URL           |
     |-----------|-------------------|-------------|------------------------|
-    | default   | flask-tdd-service |             | http://127.0.0.1:34137 |
+    | default   | flask-tdd-service |             | http://127.0.0.1:37143 |
     |-----------|-------------------|-------------|------------------------|
     🎉  Opening service default/flask-tdd-service in default browser...
-    👉  http://127.0.0.1:<port>
+    👉  http://127.0.0.1:37143
     ❗  Because you are using a Docker driver on linux, the terminal needs to be open to run it.
     ```
+![screenshot](image.png)
+
+-  you can get the Minikube IP and access it via the NodePort:
+    `minikube ip  # Get the Minikube node IP`
+    Then, you can access the service at http://<minikube-ip>:30007.
