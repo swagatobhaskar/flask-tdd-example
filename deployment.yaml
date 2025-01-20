@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-tdd-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: flask-tdd-app
+  template:
+    metadata:
+      labels:
+        app: flask-tdd-app
+    spec:
+      containers:
+      - name: flask-tdd
+        image: swport/flask-tdd:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-tdd-service
+spec:
+  selector:
+    app: flask-tdd-deployment
+  ports:
+  - port: 8000
+    targetPort: 5000
+  # type: LoadBalancer
