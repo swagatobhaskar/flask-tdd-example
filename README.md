@@ -50,8 +50,7 @@
     👉  http://127.0.0.1:37143
     ❗  Because you are using a Docker driver on linux, the terminal needs to be open to run it.
     ```
-![screenshot](image.png)
 
--  you can get the Minikube IP and access it via the NodePort:
-    `minikube ip  # Get the Minikube node IP`
-    Then, you can access the service at http://<minikube-ip>:30007.
+- you can get the Minikube IP and access it via the NodePort:
+  `minikube ip  # Get the Minikube node IP`
+  Then, you can access the service at http://minikube-ip:30007.
