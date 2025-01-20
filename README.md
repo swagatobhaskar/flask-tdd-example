@@ -54,3 +54,14 @@
 - you can get the Minikube IP and access it via the NodePort:
   `minikube ip  # Get the Minikube node IP`
   Then, you can access the service at http://minikube-ip:30007.
+
+- Enable Ingress: ` minikube addons enable ingress`
+- Verify that the NGINX Ingress controller is running
+  `kubectl get pods -n ingress-nginx`
+    ```
+      NAME                                        READY   STATUS      RESTARTS   AGE
+    ingress-nginx-admission-create-7r5nh        0/1     Completed   0          2m50s
+    ingress-nginx-admission-patch-hj4ct         0/1     Completed   1          2m50s
+    ingress-nginx-controller-56d7c84fd4-hsvxv   1/1     Running     0          2m50s
+    ```
+- 

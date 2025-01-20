@@ -41,16 +41,17 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: flask-tdd-ingress
-  annotations: 
-  labels:
-    name: flask-app-ingress
+  # annotations: 
+  # labels:
+  #   name: flask-app-ingress
 spec:
+  ingressClassName: nginx
   rules:
   - host: flask-tdd.com
     http:
       paths:
-      - pathType: Prefix
-        path: "/"
+      - path: /
+        pathType: Prefix
         backend:
           service:
             name: flask-tdd-service
