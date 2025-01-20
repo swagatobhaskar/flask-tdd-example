@@ -21,6 +21,7 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 5000
+
 ---
 apiVersion: v1
 kind: Service
@@ -34,3 +35,24 @@ spec:
     targetPort: 5000
     nodePort: 30007     # Optional: Specify a NodePort (can be in the range 30000-32767)
   type: NodePort
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: flask-tdd-ingress
+  annotations: 
+  labels:
+    name: flask-app-ingress
+spec:
+  rules:
+  - host: flask-tdd.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: flask-tdd-service
+            port: 
+              number: 80
