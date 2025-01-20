@@ -10,7 +10,7 @@ spec:
   template:
     metadata:
       labels:
-        app: flask-tdd-app
+        app: flask-tdd-deployment
     spec:
       containers:
       - name: flask-tdd
@@ -28,7 +28,7 @@ metadata:
   name: flask-tdd-service
 spec:
   selector:
-    app: flask-tdd-deployment
+    app: flask-tdd-deployment # should be same with Deployment.spec.template.metadata.labels.app
   ports:
   - port: 8000
     targetPort: 5000
