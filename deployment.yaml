@@ -41,9 +41,8 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: flask-tdd-ingress
-  # annotations: 
-  # labels:
-  #   name: flask-app-ingress
+  annotations: 
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
